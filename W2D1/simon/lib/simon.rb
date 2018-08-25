@@ -10,16 +10,16 @@ class Simon
   end
 
   def play
-    puts "====================================================================================================================="
-    puts "-----------------------------------ULTIMATE SIMON: FIBONACCI'S MEMORY CHALLENGE--------------------------------------"
-    puts "====================================================================================================================="
-    puts ""
-    puts "Before you stands a cranky old wizard bedecked in a robe and holding a magic staff, a clear crystal at the tip."
-    puts "He says \"Welcome, I am the GREAT WIZARD FIBONACCI. If you want to even learn the most rudimentary of spells,"
-    puts "you must first be tested.  Watch.  My staff will change colors sequentially.  You must remember this sequence of"
-    puts "colors, in order.  Fail, and you'd best flee from FIREBALL range, buster!\""
-    puts ""
-    puts ""
+    # puts "====================================================================================================================="
+    # puts "-----------------------------------ULTIMATE SIMON: FIBONACCI'S MEMORY CHALLENGE--------------------------------------"
+    # puts "====================================================================================================================="
+    # puts ""
+    # puts "Before you stands a cranky old wizard bedecked in a robe and holding a magic staff, a clear crystal at the tip."
+    # puts "He says \"Welcome, I am the GREAT WIZARD FIBONACCI. If you want to even learn the most rudimentary of spells,"
+    # puts "you must first be tested.  Watch.  My staff will change colors sequentially.  You must remember this sequence of"
+    # puts "colors, in order.  Fail, and you'd best flee from FIREBALL range, buster!\""
+    # puts ""
+    # puts ""
     until game_over
       take_turn
     end
@@ -47,10 +47,9 @@ class Simon
   end
 
   def require_sequence
-    @sequence_length
-    print "Enter a color> "
-    input = gets.chomp()
-
+  #  @sequence_length.times do
+  #  print "Enter a color> "
+  #  input = gets.chomp()
   end
 
   def add_random_color
@@ -80,12 +79,13 @@ class Simon
       puts "GAME OVER. Sequence Size: 1"
       #The following line breaks rspec because rspec game overs with a sequence of 1 at some point
       #raise "YOU FAIL SO HARD YOU CRASHED THE GAME - PLEASE RELOAD"
-    end
-  end
+    end #end of if
+  end #end of game over message
 
   def reset_game
     @game_over = false
     @sequence_length = 1
     @seq = []
-  end
-end
+  end#end of reset
+
+end# end of class
