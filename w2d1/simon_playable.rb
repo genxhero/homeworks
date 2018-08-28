@@ -1,5 +1,5 @@
 class Simon
-  COLORS = %w(red blue green yellow)
+  COLORS = ["red", "blue","green", "yellow"]
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -20,6 +20,8 @@ class Simon
     puts "colors, in order.  Fail, and you'd best flee from FIREBALL range, buster!\""
     puts ""
     puts ""
+    print "Enter Any Input to Begin >"
+    dummy = gets.chomp
     until game_over
       take_turn
     end
@@ -35,21 +37,36 @@ class Simon
   end
 
   def show_sequence
-       @sequence_length.times do
-         @seq << add_random_color
-       end
-       puts "Fibonacci's staff glows, rapidly shifting hue."
+         add_random_color
        display = ""
-       @seq.each {|color| display << " #{color} "}
-       puts display
-       sleep(1)
+       @seq.each do |color|
+          system("clear")
+          puts "====================================================================================================================="
+          puts "-----------------------------------ULTIMATE SIMON: FIBONACCI'S MEMORY CHALLENGE--------------------------------------"
+          puts "====================================================================================================================="
+          puts ""
+          puts "Fibonacci's staff glows, rapidly shifting hue."
+          puts color
+          sleep(1)
+        end
+       sleep(2)
        system("clear")
   end
 
   def require_sequence
-    @sequence_length.times do
-    print "Enter a color> "
-    input = gets.chomp()
+    puts "====================================================================================================================="
+    puts "-----------------------------------ULTIMATE SIMON: FIBONACCI'S MEMORY CHALLENGE--------------------------------------"
+    puts "====================================================================================================================="
+    puts ""
+    puts "Fibonacci says, \"Now, how much of the colors can you remember?\""
+    puts "Available Colors: red, blue, green, yellow"
+      idx = 0
+      while idx < @sequence_length
+      print "Enter a color> "
+      input = gets.chomp()
+      @game_over = true if input != @seq[idx]
+      idx += 1
+    end
   end
 
   def add_random_color
@@ -58,14 +75,14 @@ class Simon
 
   def round_success_message
       #Messages break rspec
-      # puts "==============================================="
-      # puts "Fibonacci says \"CORRECT!!!!!! Good job remembering!\""
-      # puts "\"But let's see how you handle a sequence of #{sequence_length +1 }\""
-      # puts "==============================================="
+       puts "==============================================="
+       puts "Fibonacci says \"CORRECT!!!!!! Good job remembering!\""
+       puts "\"But let's see how you handle a sequence of #{@sequence_length +1 }\""
+       puts "==============================================="
   end
 
   def game_over_message
-    if sequence_length == 1
+    if @sequence_length == 1
       puts "Fibonacci says \"By thunder. You...you have failed...miserably."
       puts "in all of my years of spell casting I have never seen a failure"
       puts "more pathetic.  Your memory is a vaccuous singularity incapable"
@@ -78,7 +95,22 @@ class Simon
       puts "your body implodes in on itself infinitely."
       puts "GAME OVER. Sequence Size: 1"
       #The following line breaks rspec because rspec game overs with a sequence of 1 at some point
-      #raise "YOU FAIL SO HARD YOU CRASHED THE GAME - PLEASE RELOAD"
+      raise "YOU FAIL SO HARD YOU CRASHED THE GAME - PLEASE RELOAD"
+    elsif @sequence_length > 1 && @sequence <= 5
+      puts""
+      puts "Fibonacci shakes his head and says \"Only #{@sequence_length}? Oh well.  I should have known"
+      puts "that you were a mediocre pupil.  Go back to scrubbing the Cockatrice pen!\""
+      puts "GAME OVER. Sequnce Size: #{@sequence_length}"
+  elsif @sequence_length > 5 && @sequence_length < 10
+      puts ""
+      puts "Fibonacci cracks a smile, one hand on his hip. \"Not too shabby,\" he says, \"Perhaps you do"
+      puts "have what it takes to be a wizard after all!  If you practice, maybe you won't disappoint me"
+      puts "nearly as much as usual!\""
+  elsif @sequence_length > 9000
+      puts ""
+      puts "FIBONACCI takes his crystal in his hand and crushes it whilst shouting:"
+      puts "\"IT'S OVER NINE THOUSAND!\""
+      puts "Congratulations, you have unlocked the secret ending! Achievement unlocked."
     end
   end
 
