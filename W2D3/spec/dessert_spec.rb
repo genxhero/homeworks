@@ -7,36 +7,66 @@ Instructions: implement all of the pending specs (the `it` statements without bl
 
 describe Dessert do
   let(:chef) { double("chef") }
+  subject(:dessert) { Dessert.new("Epic Win", 10, chef) }
 
   describe "#initialize" do
-    it "sets a type"
-
-    it "sets a quantity"
-
-    it "starts ingredients as an empty array"
-
-    it "raises an argument error when given a non-integer quantity"
+    it "sets a type" do
+    expect(dessert.type.class).to eq(String)
   end
 
+    it "sets a quantity" do
+      expect(dessert.quantity.class).to eq(Integer)
+  end
+    it "starts ingredients as an empty array" do
+      expect(dessert.ingredients).to eq([])
+    end
+
+    it "raises an argument error when given a non-integer quantity" do
+      expect { Dessert.new("Fail", :sym, chef) }.to raise_error(ArgumentError)
+   end
+end
   describe "#add_ingredient" do
-    it "adds an ingredient to the ingredients array"
+    it "adds an ingredient to the ingredients array" do
+      dessert.add_ingredient("Moxie")
+      expect(dessert.ingredients.last).to eq("Moxie")
+    end
   end
 
   describe "#mix!" do
-    it "shuffles the ingredient array"
+#Some times gets muddled by the RNG as there is a small chance shuffle == sort
+#Happened once during testing
+    it "shuffles the ingredient array" do
+      dessert.add_ingredient("Starfire")
+      dessert.add_ingredient("Heavy Metal Essence")
+      dessert.add_ingredient("Bacon")
+      expect(dessert.mix!).to_not eq(dessert.ingredients.sort)
+      dessert.ingredients.sort!
+    end
   end
 
   describe "#eat" do
-    it "subtracts an amount from the quantity"
+    it "subtracts an amount from the quantity" do
+      dessert.eat(2)
+      expect(dessert.quantity).to eq(8)
+    end
 
-    it "raises an error if the amount is greater than the quantity"
+    it "raises an error if the amount is greater than the quantity" do
+
+      expect { dessert.eat(9001) }.to raise_error
+    end
   end
 
   describe "#serve" do
-    it "contains the titleized version of the chef's name"
+    it "contains the titleized version of the chef's name" do
+      allow(chef).to receive(:titleize).and_return("Chef Jack Tenrec the Great Baker")
+      expect(dessert.serve).to eq("Chef Jack Tenrec the Great Baker has made 10 Epic Wins!")
+    end
   end
 
   describe "#make_more" do
-    it "calls bake on the dessert's chef with the dessert passed in"
+    it "calls bake on the dessert's chef with the dessert passed in" do
+      expect(chef).to receive(:bake).with(dessert)
+    end
   end
+
 end
