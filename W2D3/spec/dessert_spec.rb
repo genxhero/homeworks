@@ -11,11 +11,11 @@ describe Dessert do
 
   describe "#initialize" do
     it "sets a type" do
-    expect(dessert.type.class).to eq(String)
+    expect(dessert.type).to eq("Epic Win")
   end
 
     it "sets a quantity" do
-      expect(dessert.quantity.class).to eq(Integer)
+      expect(dessert.quantity).to eq(10)
   end
     it "starts ingredients as an empty array" do
       expect(dessert.ingredients).to eq([])
@@ -66,6 +66,7 @@ end
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
       expect(chef).to receive(:bake).with(dessert)
+      dessert.make_more
     end
   end
 
