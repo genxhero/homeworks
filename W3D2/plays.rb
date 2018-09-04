@@ -50,7 +50,7 @@ class Play
   end
 
 def self.find_by_title(title)
-  query = PlayDBConnection.instance.execute(<<-SQL, @title)
+  query = PlayDBConnection.instance.execute(<<-SQL, title)
   SELECT
     *
   FROM
@@ -94,7 +94,7 @@ attr_accessor :name, :birth_year
 
     def self.find_by_name(name)
       #create local variable from the SQL query, then return it
-      playwright = PlayDBConnection.instance.execute(<<-SQL, @name, @id)
+      playwright = PlayDBConnection.instance.execute(<<-SQL, name)
       SELECT
          *
       FROM
@@ -102,7 +102,8 @@ attr_accessor :name, :birth_year
       WHERE
         name = ?
       SQL
-      Playwright.new(playwright)
+      Playwright.new(playwright.first)
+      #testing output on pry revealed tht i was getting an array
     end
 
 
@@ -118,7 +119,7 @@ attr_accessor :name, :birth_year
     end
 
     def update
-      raise "#{self} not in database" unless @id
+      raise "#{self} not in database" if @id == nil
       PlayDBConnection.instance.execute(<<-SQL, @name, @birth_year, @id)
         UPDATE
           playwrights
@@ -130,7 +131,7 @@ attr_accessor :name, :birth_year
     end
 
     def get_plays #(returns all plays written by playwright)
-      works = PlayDBConnection.instance.execute(<<-SQL, @name, @id)
+      works = PlayDBConnection.instance.execute(<<-SQL, @id)
       SELECT
         *
       FROM
