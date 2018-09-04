@@ -58,7 +58,6 @@ def self.find_by_title(title)
   WHERE
    title = ?
   SQL
-  return nil if query['name'] == ''
   Play.new(query.first)
 end
 
