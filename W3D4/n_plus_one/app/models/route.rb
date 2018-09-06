@@ -20,6 +20,16 @@ class Route < ApplicationRecord
   end
 
   def better_drivers_query
-    # TODO: your code here
+    #(e.g., {'1' => ['Joan Lee', 'Charlie McDonald', 'Kevin Quashie'],
+    #'2' => ['Ed Michaels', 'Lisa Frank', 'Sharla Alegria']})
+    bus_arr = self.buses.includes(:drivers)
+    resulting_hash = {}
+    #loop hash[buses.id] = driver.name
+    bus_arr.each do |el|
+        driver_arr = []
+        el.drivers.each { |operator| driver_arr << operator.name }
+        resulting_hash[bus.id] = driver_arr
+     end
+    resulting_hash
   end
 end
