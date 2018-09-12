@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
   def password=(pword)
     @password = pword
-    @password_digest = BCrypt::Password.create(pword)
+    self.password_digest = BCrypt::Password.create(pword)
   end
 
 private

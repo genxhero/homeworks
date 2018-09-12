@@ -52,3 +52,14 @@ Migrating to CreateUsers (20180912135536)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "gage"], ["password_digest", "$2a$10$aiDJCxzRgbTnuyiNSnQHh.9T//Ym6uFNpkumacKpg9xnbyDtkiIw2"], ["session_token", "LzyVe8rm1CNgNK6-dazeRQ"], ["created_at", "2018-09-12 15:36:15.504981"], ["updated_at", "2018-09-12 15:36:15.504981"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
