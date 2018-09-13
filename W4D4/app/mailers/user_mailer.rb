@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: 'from@example.com'
+    default from: 'catmin@NinetyNineCats.com'
   def welcome_email(user)
     @user = user
     @url  = 'http://example.com/login'
