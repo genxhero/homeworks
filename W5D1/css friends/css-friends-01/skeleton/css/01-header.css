@@ -2,8 +2,6 @@
 
 
 .header {
-  display: flex;
-  justify-content: space-between;
   background-color: #f00;
   color: #fff;
   border-bottom: 1px solid #ccc;
@@ -14,19 +12,17 @@
   padding: 10px 20px;
 }
 
-.header-nav-group{
+.header-nav group{
   display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   width: 900px;
-  justify-content: space-between;
-  background-color: inherit;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
 
 .header-logo {
-  justify-content: flex-start;
-  margin: auto;
+  float: left;
   border-right: 1px solid #ccc;
   font-weight: 700;
 }
@@ -36,14 +32,14 @@
 }
 
 .header-list {
- float: right;
+ justify-content: flex-end;
   display: flex;
 }
 
 .header-list > li {
   border-left: 1px solid #ccc;
   background-color: inherit;
-
+  display: flex;
 }
 
 .header-list > li:hover {
