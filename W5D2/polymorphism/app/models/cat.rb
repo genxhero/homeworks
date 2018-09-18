@@ -1,5 +1,5 @@
 class Cat < ApplicationRecord
-    has_many :toys, as :toyable
+    include Toyable
 end
 
 # and Cat models. These should both be named toys. Again, refer to the
