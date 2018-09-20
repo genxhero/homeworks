@@ -57,13 +57,8 @@ function mysteryScoping2() {
 
  function fizzBuzz(array) {
     let newArray = [];
-
-    for (let i=0; i<items.length; i++) {
-		    if ((array[i] % 3) === 0 && (array[i] % 5) === 0) {
-       		continue;
-   		    }
-
-  			if ((array[i] % 3) === 0 || (array[i] % 5) === 0) {
+    for (let i=0; i<array.length; i++) {
+  			if ((array[i] % 3) === 0 ^ (array[i] % 5) === 0) {
  			      newArray.push(array[i]);
            }
  		 }
