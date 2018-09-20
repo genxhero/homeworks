@@ -155,18 +155,22 @@ false
 undefined
 >
  function fizzBuzz(array) {
-var newArray = [];
+let newArray = [];
 var idx = 0;
 while (idx < array.length) {
+		console.log(array[idx];
 		if (array[idx] % 3 === 0 && array[idx] % 5 === 0) {
-       	continue;
- 					 }
+             	idx++;
+       		continue;			 
+   		}
+
   			if (array[idx] % 3 === 0 || array[idx] % 5 === 0) {
- 			newArray.push(array[idx]);
- 						}
+ 			newArray.push(array[idx]);					
+                   }
+
  			idx++;
  		}
-	 return newArray
+	 return newArray;
  }
 
 
