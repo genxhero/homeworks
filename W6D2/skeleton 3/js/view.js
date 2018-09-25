@@ -43,7 +43,8 @@ View.prototype.exercise3 = function () {
 View.prototype.exercise4 = function () {
   //Challenge: Write your first name in every other square.
   //Result: Your name appears in every other square.
-  let name = "Aaron Goddard";
+  let name = $("<h6>").text("Aaron Goddard");
+  $('.square:nth-child(2)').append(name);
   //your code here!
 };
 
