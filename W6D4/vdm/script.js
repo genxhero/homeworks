@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
      input.value = "";
      const newItem = document.createElement("li");
      newItem.textContent = favorite;
-
      const places = document.getElementById("sf-places");
      places.appendChild(newItem);
    };
@@ -41,7 +40,8 @@ const newPhoto = (photo) => {
   photoInfo.value = "";
   const newItem = document.createElement("li img");
   const photos = document.getElementById("photos")
-  newItem.i
+  newItem.image = newPic;
+  photos.appendChild(newItem);
 };
 
 const photoButton = document.querySelector(".photo-url-submit")
